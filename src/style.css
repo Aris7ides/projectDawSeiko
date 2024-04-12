@@ -1,0 +1,173 @@
+body{
+    margin: 0;
+    color: #494949;
+}
+
+/*HEADER*/
+
+header {
+    background-color: #f7aefb;
+    font-family: "Dancing Script", cursive;
+    font-size: 1.2em;
+    font-weight: bold;
+    /*HACER header fijo*/
+}
+
+#containerHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    height: 10vh;
+    border-bottom: 2px solid #494949;
+}
+
+header p{
+    display: none;
+}
+
+header a{
+    text-decoration: none;
+    color: #494949;
+}
+
+#logo{
+    padding: 1vh;
+}
+
+#logo img{
+    width: 100%;
+    height: 48px;
+}
+
+#menuMobile{
+    padding: 1vh;
+}
+
+#menuMobile img{
+    height: 42px;
+}
+
+nav{
+    display: none;
+    border-bottom: 2px solid #494949;
+}
+
+nav ul{
+    list-style: none;
+    /* margin: 0;
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+
+nav li{
+    padding-bottom: 5px;
+}
+
+/*FOOTER*/
+
+footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #f7aefb;
+    text-align: center;
+    /**/
+    width: 100%;
+    /* position: absolute;
+    bottom: 0px; */
+    padding-bottom: 18px;
+    border-top: 2px solid #494949;
+}
+
+#footContacto{
+    border: 1px solid;
+}
+
+#footRedes img{
+    width: 60px;
+}
+
+#footEnlaces ul{ 
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+footer a{
+    color: #494949;
+}
+
+/*MAIN*/
+/*BOTON WHATSAPP*/
+.bttnWhatsapp img{
+    width: 20px;
+    height: 20px;
+}
+
+/*ContainerMain*/
+.containerMain{
+    text-align: center;
+}
+
+/*movil*/
+@media only screen and (max-width:599px){
+    nav{
+    background-color: #f7aefb;
+    position: absolute;
+    height: 90vh;
+    width: 100%;
+    }
+
+    aside{
+        display: none;
+    }
+}
+
+/*web*/
+@media only screen and (min-width:600px) {
+    #menuMobile{
+        display: none;
+    }
+
+    header p{
+        display: block;
+        margin: 0;
+    }
+
+    nav{
+        display: block;
+        text-align: center;
+    }
+
+    nav ul{
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    
+    nav li{
+        display: inline;
+        margin: 1vw;
+    }
+
+    #containerHeader{
+        flex-direction: column;
+        justify-content: center;
+        height: auto;
+    }
+
+    #logo{
+        text-align: center;
+    }
+
+    /**/
+    footer{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
