@@ -1,11 +1,11 @@
 <?php
 session_start();
-include "../../inc/dbinfo.inc";
+include "../inc/dbinfo.inc";
 
 //Conectar con la base de datos
 $connection = new mysqli(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE);
 
-$query='SELECT * FROM usuario';
+$query='SELECT * FROM producto';
 
 $result = $connection->query($query);
 
@@ -17,5 +17,6 @@ if ($connection->connect_error) {
         echo json_encode($result->fetch_all(MYSQLI_ASSOC));
     }
 }
+
 $connection->close();
 ?>
