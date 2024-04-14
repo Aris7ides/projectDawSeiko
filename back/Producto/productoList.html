@@ -14,7 +14,7 @@
     <!-- Ventana modal para crear nuevo  producto -->
     <dialog id="createModal">
         <button onclick="window.createModal.close()">X</button>
-        <form action="./php/createProducto.php" method="post">
+        <form action="./createProducto.php" method="post">
             <label for="nomP">Nombre del Producto:</label>
             <input type="text" name="nomP" id="nomP" autofocus>
             <br>
@@ -35,7 +35,7 @@
     <!-- Ventana modal para editar un producto -->
     <dialog id="updateModal">
         <button onclick="window.updateModal.close()">X</button>
-        <form action="./php/updateProducto.php" method="post">
+        <form action="./updateProducto.php" method="post">
             <div id="updateDatos"></div>
             <!-- añadir selecct de categorias y publico mas adelante -->
             <input type="submit" value="Actualizar">
