@@ -13,6 +13,12 @@
             <router-link to="/contacto">
                 <li>Contacto</li>
             </router-link>
+            <router-link to="/login">
+                <li>login</li>
+            </router-link>
+            <router-link to="/crud">
+                <li>crudPrueba</li>
+            </router-link>
         </ul>
     </div>
 </template>

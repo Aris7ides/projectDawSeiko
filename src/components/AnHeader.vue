@@ -3,8 +3,9 @@
         <div id="containerHeader">
             <div id="logo">
                 <router-link to="/">
-                    <img src="../assets/titulo-removebg-preview.png">
-                    <p>Regalos personalizados</p>
+                    <!-- <img src="../assets/titulo-removebg-preview.png"> -->
+                    <h2>Seiko</h2>
+                    <!-- <p>Regalos personalizados</p> -->
                 </router-link>
             </div>
             <!-- Menu para los moviles -->

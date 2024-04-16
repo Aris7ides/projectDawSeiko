@@ -6,6 +6,7 @@ import PagProductos from '../components/PagProductos'
 import FormContact from '../components/FormContact'
 import FormLogin from '../components/FormLogin'
 import PagDetalle from '../components/PagDetalle'
+import ProductoCRUD from '@/components/ProductoCRUD.vue'
 
 const routes = [
     { path: '/', component: PagHome },
@@ -13,7 +14,8 @@ const routes = [
     { path: '/productos', component: PagProductos},
     { path: '/contacto', component: FormContact},
     { path: '/login', component: FormLogin},
-    { path: '/detalle', component: PagDetalle}
+    { path: '/detalle', component: PagDetalle},
+    { path: '/crud', component: ProductoCRUD}
 ];
 
 const router = createRouter({
