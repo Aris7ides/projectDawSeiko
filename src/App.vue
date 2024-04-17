@@ -1,13 +1,14 @@
 <template>
   <AnHeader />
-  <hr>
-  <router-view />
-  <hr>
-  <p>Podria poner el footer aqui</p>
+  <div class="container">
+    <router-view  />
+  </div>
+  <AnFooter />
 </template>
 
 <script>
 import AnHeader from './components/AnHeader.vue';
+import AnFooter from './components/AnFooter.vue';
 
 export default {
   name: 'App',
@@ -17,7 +18,7 @@ export default {
     }
   },
   components: {
-    AnHeader
+    AnHeader, AnFooter
 }
 }
 </script>

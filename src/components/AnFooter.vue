@@ -1,41 +1,33 @@
 <template>
-    <footer>
-        <div id="footDatos">
-            <h3>Datos de Contacto</h3>
-            <p>Mislata, Valencia, España 46920</p>
-            <p>seiko@gmail.com</p>
-            <p>+34 611222333</p>
+    <footer class="text-center py-4 mt-4">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12">
+                <div id="footDatos">
+                    <h3>Datos de Contacto</h3>
+                    <p>Mislata, Valencia, España 46920</p>
+                    <p>seiko@gmail.com</p>
+                    <p>+34 611222333</p>
+                </div>
+                <div>
+                    <h3>Redes Sociales</h3>
+                    <div id="footRedes" class="d-flex justify-content-center">
+                        <router-link to="/" class="mx-3">
+                            <img src="../assets/whatsapp.svg" alt="whatsapp">
+                        </router-link>
+                        <br>
+                        <router-link to="/" class="mx-3">
+                            <img src="../assets/instagram.svg" alt="instagram">
+                        </router-link>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="footRedes">
-            <h3>Redes Sociales</h3>
-
-            <!--
-                Cambiar la direccion de ruta
-            -->
-
-            <!-- https://api.whatsapp.com/send?phone=[numero de telefono] -->
-            <router-link to="/login">
-                <img src="../assets/whatsapp.svg" alt="whatsapp">
-            </router-link>
-            <br>
-            <!-- https://www.instagram.com/handmane_seiko -->
-            <router-link to="/login">
-                <img src="../assets/instagram.svg" alt="instagram">
-            </router-link>
-
-            <!--
-                Cambiar la direccion de ruta
-            -->
-        </div>
-        <div id="footEnlaces">
-            <h3>Enlaces de Interes</h3>
-            <ListMenu />
-        </div>
+        <!-- https://www.instagram.com/handmade_seiko -->
+        <!-- https://api.whatsapp.com/send?phone=[numero de telefono] -->
     </footer>
 </template>
 
 <script>
-import ListMenu from './ListMenu.vue'
 
 export default {
     name: 'menuItems',
@@ -45,12 +37,16 @@ export default {
         }
     },
     components: {
-        ListMenu
     }
 }
 </script>
 
 <style>
+footer {
+    background-color: #f7aefb;
+    color: #494949;
+}
+
 /* footer {
     display: flex;
     flex-direction: column;
@@ -70,7 +66,7 @@ export default {
 } */
 
 #footRedes img {
-    width: 60px;
+    width: 42px;
 }
 
 /* #footEnlaces ul {
