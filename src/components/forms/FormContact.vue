@@ -29,10 +29,10 @@
                     <textarea class="form-control border border-dark mb-2" v-model="mensj" rows="5" required></textarea>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-lg-10 offset-lg-5">
-                    <button type="reset" class="btn btn-outline-secondary m-1">Limpiar</button>
-                    <button type="submit" class="btn btn-primary m-1">Enviar</button>
+            <div class="form-group row">
+                <div class="text-center text-lg-start">
+                    <button type="reset" class="btn btn-outline-secondary m-1 col-lg-2 btn-sm col-10">Limpiar</button>
+                    <button type="submit" class="btn btn-primary m-1 col-lg-8 btn-sm col-10">Enviar</button>
                 </div>
             </div>
         </fieldset>

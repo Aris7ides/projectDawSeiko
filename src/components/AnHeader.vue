@@ -1,7 +1,10 @@
 <template>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg mb-2">
         <div class="container-fluid">
-            <router-link class="navbar-brand" to="/"><img class="mx-4 px-4" src="../assets/titulo-removebg-preview.png"></router-link>
+            <router-link class="navbar-brand" to="/">
+                <!-- <img class="mx-4 px-4" src="../assets/titulo-removebg-preview.png"> -->
+                <span class="h1">SEIKŌ</span>
+            </router-link>
             <button class="navbar-toggler" @click="openNav" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -16,25 +19,7 @@
             </div>
         </div>
     </nav>
-
-    <!-- <div id="header">
-        <div id="containerHeader">
-            <div id="logo">
-                <router-link to="/"> -->
-    <!-- <img src="../assets/titulo-removebg-preview.png"> -->
-    <!-- <h2>Seiko</h2> -->
-    <!-- <p>Regalos personalizados</p> -->
-    <!-- </router-link>
-            </div> -->
-    <!-- Menu para los moviles -->
-    <!-- <div id="menuMobile">
-                <img src="../assets/menubars.svg" @click="openNav()">
-            </div>
-        </div>
-        <nav>
-            <ListMenu />
-        </nav>
-    </div> -->
+    <!-- puede que el boton de menu falle por tener el script de bootstap y tambien un script propio -->
 </template>
 
 <script>

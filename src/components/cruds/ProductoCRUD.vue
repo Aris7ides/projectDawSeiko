@@ -1,29 +1,38 @@
 <template>
-    <button class="btn btn-secondary btn-sm" @click="showForm=!showForm">+ Registrar nuevo producto</button>
+    <button class="btn btn-secondary btn-sm" @click="showForm = !showForm">+ Registrar nuevo producto</button>
     <div v-if="showForm">
         <hr>
         <h4>Creacion de producto</h4>
         <form @submit.prevent="createProducto">
             <div class="from-group row my-2">
-                <label class="col-sm-2 col-form-label">Nombre Producto:</label>
+                <label class="col-sm-2 col-form-label">Nombre:</label>
                 <div class="col-sm-10">
                     <input class="form-control border border-dark" type="text" v-model="nomP" placeholder="nombre">
                 </div>
             </div>
             <div class="from-group row my-2">
-                <label class="col-sm-2 col-form-label">Descripcion Producto:</label>
+                <label class="col-sm-2 col-form-label">Descripcion:</label>
                 <div class="col-sm-10">
                     <input class="form-control border border-dark" type="text" v-model="descP"
                         placeholder="descripcion">
                 </div>
             </div>
             <div class="from-group row my-2">
-                <label class="col-sm-2 col-form-label">Precio Producto:</label>
+                <label class="col-sm-2 col-form-label">Categoria:</label>
+                <div class="col-sm-10">
+                    <select class="form-select border border-dark" v-model="id_categoria">
+                        <option v-for="categoria in categorias" :key="categoria.id" :value="categoria.id">{{
+                            categoria.categoria }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="from-group row my-2">
+                <label class="col-sm-2 col-form-label">Precio:</label>
                 <div class="col-sm-10">
                     <input class="form-control border border-dark" type="number" v-model="precP" placeholder="precio">
                 </div>
             </div>
-            <div class="my-2 text-center">    
+            <div class="my-2 text-center">
                 <button class="btn btn-success btn-sm mx-2" type="submit">Registrar</button>
                 <button class="btn btn-outline-secondary btn-sm mx-2" type="reset">Limpiar</button>
             </div>
@@ -31,30 +40,40 @@
     </div>
     <hr>
     <h4>Lista de productos</h4>
-    <table class="table">
+    <p class="d-block d-sm-none">¡¡no se puede la tabla ver en version movil!!</p>
+    <table class="table d-none d-sm-block text-center">
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">ID</th>
                 <th scope="col">NombreP</th>
                 <th scope="col">Descripcion</th>
                 <th scope="col">Precio</th>
+                <th scope="col">Categoria</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="(producto, index) in productos" :key="producto.idP">
-                <th scope="row">{{ index+1 }}</th>
-                <td>{{ producto.idP }}</td>
+                <th scope="row">{{ index + 1 }}</th>
                 <td><input type="text" v-model="producto.nombreP" :disabled="!producto.editando"></td>
                 <td><textarea v-model="producto.descripcionP" :disabled="!producto.editando"></textarea></td>
                 <td><input type="number" v-model="producto.precioP" :disabled="!producto.editando"></td>
+                <td>
+                    <select class="form-select" v-model="producto.id_categoria" :disabled="!producto.editando">
+                        <option :value="null">Ninguno</option>
+                        <option v-for="categoria in categorias" :key="categoria.id" :value="categoria.id">
+                            {{ categoria.categoria }}
+                        </option>
+                    </select>
+                </td>
+                <!-- <td>{{ getNombreCategoria(producto.id_categoria) }}</td> -->
                 <td>
                     <button class="btn btn-outline-warning btn-sm" v-if="!producto.editando"
                         @click="editarProducto(producto)">Editar</button>
                     <button class="btn btn-success btn-sm" v-if="producto.editando"
                         @click="updateProducto(producto)">Actualizar</button>
-                    <button class="btn btn-danger btn-sm mx-1" @click="deleteProducto(producto.idP)">Eliminar</button>
+                    <button v-if="producto.editando" class="btn btn-danger btn-sm mx-1" @click="producto.editando=!producto.editando">X</button>
+                    <button v-if="!producto.editando" class="btn btn-danger btn-sm mx-1" @click="deleteProducto(producto)">Eliminar</button>
                 </td>
             </tr>
         </tbody>
@@ -65,18 +84,27 @@
 import axios from 'axios'
 
 export default {
-    name: "ProductCrud",
+    name: "ProductoCrud",
     data() {
         return {
             productos: [],
             nomP: '',
             descP: '',
             precP: '',
-            showForm:false
+            showForm: false,
+            categorias: [],
+            id_categoria: ''
         }
     },
     mounted() {
         this.fetchProductos();
+        axios
+            .get('http://localhost/back/Categoria/readCategoria.php')
+            .then(response => (this.categorias = response.data))
+            .catch(error => {
+                console.error('Error al obtener los categorias:', error);
+                console.log('Error al obtener los categorias');
+            });
     },
     methods: {
         fetchProductos() {
@@ -93,6 +121,7 @@ export default {
             formData.append('nomP', this.nomP);
             formData.append('descP', this.descP);
             formData.append('precioP', this.precP);
+            formData.append('id_categoria', this.id_categoria);
 
             axios
                 .post('http://localhost/back/Producto/createProducto.php', formData, {
@@ -114,10 +143,14 @@ export default {
                     console.error('Error al crear el producto:', error);
                 });
         },
-        deleteProducto(idProducto) {
+        deleteProducto(producto) {
+            const formData = new FormData();
+            formData.append('idToDelete', producto.idP);
+            formData.append('id_categoria', producto.id_categoria);
+
             if (window.confirm("seguro que quieres borrar este producto?")) {
                 axios
-                    .post('http://localhost/back/Producto/deleteProducto.php', { idToDelete: idProducto }, {
+                    .post('http://localhost/back/Producto/deleteProducto.php', formData, {
                         headers: {
                             'Content-Type': 'application/x-www-form-urlencoded'
                         }
@@ -156,6 +189,7 @@ export default {
             formData.append('nomP', producto.nombreP);
             formData.append('descP', producto.descripcionP);
             formData.append('precioP', producto.precioP);
+            formData.append('id_categoria', producto.id_categoria);
 
             axios
                 .post('http://localhost/back/Producto/updateProducto.php', formData, {
@@ -187,7 +221,13 @@ export default {
                         console.log('Error: ' + error.message);
                     }
                 });
+        },
+        getNombreCategoria(idCategoria) {
+            const categoria = this.categorias.find(cat => cat.id === idCategoria);
+            return categoria ? categoria.categoria : 'no';
         }
     }
 }
 </script>
+
+<!-- HACER que cuando se actualice un producto y su categoria tambien se actualice la cantidad de productos de esa categoria -->

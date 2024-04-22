@@ -1,29 +1,49 @@
 <template>
     <footer class="text-center py-4 mt-4">
-        <div class="row">
-            <div class="col-lg-12 col-sm-12">
-                <div id="footDatos">
-                    <h3>Datos de Contacto</h3>
-                    <p>Mislata, Valencia, España 46920</p>
-                    <p>seiko@gmail.com</p>
-                    <p>+34 611222333</p>
-                </div>
-                <div>
-                    <h3>Redes Sociales</h3>
-                    <div id="footRedes" class="d-flex justify-content-center">
-                        <router-link to="/" class="mx-3">
-                            <img src="../assets/whatsapp.svg" alt="whatsapp">
-                        </router-link>
-                        <br>
-                        <router-link to="/" class="mx-3">
-                            <img src="../assets/instagram.svg" alt="instagram">
-                        </router-link>
-                    </div>
-                </div>
+        <div id="footDatos">
+            <pre>
+                Horario de atención al cliente:
+                
+                Lunes a Viernes de 9:00 -21:00
+                Sábados de 9:00 - 14:00
+                
+                WhatsApp: 641012401
+                Correo: infonekogistore@gmail.com
+            </pre>
+        </div>
+        <div>
+            <h3>Redes Sociales</h3>
+            <div id="footRedes" class="d-flex justify-content-center">
+                <router-link to="/" class="mx-3">
+                    <img src="../assets/whatsapp.svg" alt="whatsapp">
+                </router-link>
+                <br>
+                <router-link to="/" class="mx-3">
+                    <img src="../assets/instagram.svg" alt="instagram">
+                </router-link>
             </div>
         </div>
         <!-- https://www.instagram.com/handmade_seiko -->
         <!-- https://api.whatsapp.com/send?phone=[numero de telefono] -->
+        <div>
+            <div>
+                <span>© 2024, Seikō</span>
+                <ul>
+                    <li>
+                        <a>Política de reembolso</a>
+                    </li>
+                    <li>
+                        <a >Política de privacidad</a>
+                    </li>
+                    <li>
+                        <a>Términos del servicio</a>
+                    </li>
+                    <li>
+                        <a>Política de envío</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </footer>
 </template>
 
