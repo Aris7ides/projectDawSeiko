@@ -19,7 +19,9 @@
             </div>
         </div>
         <hr>
-        <FormContact />
+        <div id="contacto">
+            <FormContact />
+        </div>
     </div>
 </template>
 

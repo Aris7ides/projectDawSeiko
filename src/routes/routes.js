@@ -4,21 +4,21 @@ import PagHome from '@/components/pags/PagHome.vue'
 import PagAbout from '@/components/pags/PagAbout.vue'
 import PagProductos from '@/components/pags/PagProductos'
 import PagDetalle from '@/components/pags/PagDetalle'
-import ProductoCRUD from '@/components/ProductoCRUD.vue'
+import PagCRUD from '@/components/PagCRUD.vue'
 
-import FormContact from '@/components/forms/FormContact'
+// import FormContact from '@/components/forms/FormContact'
 import FormLogin from '@/components/forms/FormLogin'
 import FormRegister from '@/components/forms/FormRegister.vue'
 
 const routes = [
     { path: '/', component: PagHome },
     { path: '/about', component: PagAbout },
-    { path: '/productos', component: PagProductos},
-    { path: '/contacto', component: FormContact},
-    { path: '/login', component: FormLogin},
-    { path: '/register', component: FormRegister},
-    { path: '/detalle', component: PagDetalle},
-    { path: '/crud', component: ProductoCRUD}
+    { path: '/productos', component: PagProductos },
+    { path: '/producto/:nom/:id', component: PagDetalle},
+    { path: '/login', component: FormLogin },
+    { path: '/register', component: FormRegister },
+    { path: '/crud', component: PagCRUD },
+    // { path: '/contacto', component: FormContact }
 ];
 
 const router = createRouter({
