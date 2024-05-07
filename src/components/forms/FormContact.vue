@@ -1,42 +1,63 @@
 <template>
-    <form @submit.prevent="createContacto" class="form-horizontal">
-        <fieldset>
-            <legend class="h4 text-center">Contacto</legend>
-            <div class="form-group row">
-                <label class="col-lg-2 border-bottom">Nombre</label>
-                <div class="col-lg-10">
-                    <input type="text" v-model="nombre" class="form-control border border-dark mb-2"
-                        placeholder="Nombre" />
+    <div id="FormContacto" class="container mb-4">
+        <h4 class="text-center">Dejar un mensaje:</h4>
+        <div class="row row-cols-1 row-cols-md-2 container">
+            <div class="col-md-8 container mb-4">
+                <form @submit.prevent="createContacto" class="form-horizontal">
+                    <fieldset>
+                        <div class="form-group row mb-2">
+                            <label class="col-lg-2 text-center">Nombre</label>
+                            <div class="col-lg-10">
+                                <input type="text" v-model="nombre" class="form-control border border-dark" placeholder="nombre" />
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label class="col-lg-2  text-center">Email *</label>
+                            <div class="col-lg-10">
+                                <input type="email" v-model="correo" class="form-control border border-dark"
+                                    placeholder="askme@example.com" required />
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label class="col-lg-2  text-center">Teléfono</label>
+                            <div class="col-lg-10">
+                                <input type="text" v-model="telf" class="form-control border border-dark" placeholder="teléfono" />
+                            </div>
+                        </div>
+                        <div class="form-group row mb-2">
+                            <label class="col-lg-2  text-center my-auto">Mensaje *</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control border border-dark" v-model="mensj" rows="3" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="text-center text-lg-start row  row-cols-1 row-cols-md-3">
+                                <button type="reset" class="btn btn-outline-secondary btn-sm mx-sm-auto m-1">Limpiar</button>
+                                <button type="submit" class="btn btn-secondary btn-sm mx-sm-auto m-1">Enviar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="col-md-3 bg-secondary text-white rounded container my-auto">
+                <p class="h5 text-center">Datos de contacto:</p>
+                <div class="d-flex flex-column align-items-start">
+                    <div class="d-flex align-items-center">
+                        <img src="../../assets/phone.svg" alt="" width="18px" class="me-2">
+                        <p class="d-inline">+34 611222333</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="../../assets/mail.svg" alt="" width="18px" class="me-2">
+                        <p class="d-inline">info@seikohandmade.es</p>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <img src="../../assets/location.svg" alt="" width="18px" class="me-2">
+                        <p class="d-inline">Valencia, España</p>
+                    </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <label class="col-lg-2 border-bottom">Correo Electronico</label>
-                <div class="col-lg-10">
-                    <input type="email" v-model="correo" class="form-control border border-dark mb-2"
-                        placeholder="Correo Electronico" required />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-2 border-bottom">Teléfono</label>
-                <div class="col-lg-10">
-                    <input type="text" v-model="telf" class="form-control border border-dark mb-2"
-                        placeholder="Teléfono" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <label class="col-lg-2 border-bottom">Mensaje</label>
-                <div class="col-lg-10">
-                    <textarea class="form-control border border-dark mb-2" v-model="mensj" rows="5" required></textarea>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="text-center text-lg-start">
-                    <button type="reset" class="btn btn-outline-secondary m-1 col-lg-2 btn-sm col-10">Limpiar</button>
-                    <button type="submit" class="btn btn-primary m-1 col-lg-8 btn-sm col-10">Enviar</button>
-                </div>
-            </div>
-        </fieldset>
-    </form>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -73,7 +94,7 @@ export default {
                             this.telf = '';
                             this.mensj = '';
                             this.correo = '';
-                            alert('mensaje enviado')
+                            // alert('mensaje enviado');
                         } else {
                             console.log('Error al crear el contacto');
                         }

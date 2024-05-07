@@ -52,6 +52,7 @@
 
 <script>
 import axios from 'axios'
+import { fetchCategorias } from '@/api';
 
 export default {
     name: "CategoriaCrud",
@@ -62,18 +63,16 @@ export default {
             showForm: false
         }
     },
-    mounted() {
-        this.fetchCategorias();
+    async mounted() {
+        this.cargarCategorias();
     },
     methods: {
-        fetchCategorias() {
-            axios
-                .get('http://localhost/back/Categoria/readCategoria.php')
-                .then(response => (this.categorias = response.data))
-                .catch(error => {
-                    console.error('Error al obtener los categorias:', error);
-                    console.log('Error al obtener los categorias');
-                });
+        async cargarCategorias() {
+            try {
+                this.categorias = await fetchCategorias();
+            } catch (error) {
+                console.error('Error en la carga de categorias:', error);
+            }
         },
         createCategoria() {
             const formData = new FormData();
@@ -87,7 +86,7 @@ export default {
                 })
                 .then(response => {
                     if (response.data.success) {
-                        this.fetchCategorias();
+                        this.cargarCategorias();
                         this.categoriaform = '';
                     } else {
                         console.log('Error al crear el categoria');
@@ -107,7 +106,7 @@ export default {
                     })
                     .then(response => {
                         if (response.data.success) {
-                            this.fetchCategorias();
+                            this.cargarCategorias();
                             console.log('Categoria eliminado correctamente');
                         } else {
                             console.log('Error al eliminar el categoria');
@@ -115,18 +114,6 @@ export default {
                     })
                     .catch(error => {
                         console.error('Error al eliminar el categoria:', error);
-
-                        if (error.response) {
-                            if (error.response.status === 400) {
-                                console.log('Error en la solicitud: ' + error.response.data.message);
-                            } else if (error.response.status === 500) {
-                                console.log('Error interno del servidor: ' + error.response.data.message);
-                            } else {
-                                console.log('Error: ' + error.response.data.message);
-                            }
-                        } else {
-                            console.log('Error: ' + error.message);
-                        }
                     });
             }
         },
@@ -146,7 +133,7 @@ export default {
                 })
                 .then(response => {
                     if (response.data.success) {
-                        this.fetchCategorias();
+                        this.cargarCategorias();
                         console.log('Categoria actualizado correctamente');
                     } else {
                         console.log(response);
@@ -155,18 +142,6 @@ export default {
                 })
                 .catch(error => {
                     console.error('Error al actualizar el categoria:', error);
-
-                    if (error.response) {
-                        if (error.response.status === 400) {
-                            console.log('Error en la solicitud: ' + error.response.data.message);
-                        } else if (error.response.status === 500) {
-                            console.log('Error interno del servidor: ' + error.response.data.message);
-                        } else {
-                            console.log('Error: ' + error.response.data.message);
-                        }
-                    } else {
-                        console.log('Error: ' + error.message);
-                    }
                 });
         }
     }

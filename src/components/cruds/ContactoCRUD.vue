@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { fetchContactos } from '@/api';
 
 export default {
     name: "ContactoCrud",
@@ -55,19 +55,12 @@ export default {
             contactos: [],
         }
     },
-    mounted() {
-        this.fetchContactos();
-    },
-    methods: {
-        fetchContactos() {
-            axios
-                .get('http://localhost/back/Contacto/readContacto.php')
-                .then(response => (this.contactos = response.data))
-                .catch(error => {
-                    console.error('Error al obtener los contactos:', error);
-                    console.log('Error al obtener los contactos');
-                });
-        },
+    async mounted() {
+        try {
+            this.contactos = await fetchContactos();
+        } catch(error) {
+            console.error('Error en el montaje de contactos:', error);
+        }
     }
 }
 </script>

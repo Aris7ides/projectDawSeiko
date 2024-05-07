@@ -1,4 +1,6 @@
 <template>
+    <!-- ESTA PAGINA DEBE SER SOLO VISIBLE A USUARIOS ADMIN -->
+
     <div>
         <div class="btn-group text-center mb-4">
             <button class="btn btn-secondary"

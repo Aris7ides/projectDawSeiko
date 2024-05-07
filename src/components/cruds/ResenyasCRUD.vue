@@ -8,8 +8,8 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Email</th>
                 <th scope="col">Comentario</th>
-                <th scope="col">Producto</th>
                 <th scope="col">Calificacion</th>
+                <th scope="col">Producto</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -19,8 +19,8 @@
                 <td>{{ resenya.nombre }}</td>
                 <td>{{ resenya.email }}</td>
                 <td>{{ resenya.comentario }}</td>
-                <td>{{ resenya.id_producto }}</td>
                 <td>{{ resenya.calific }}</td>
+                <td>{{ resenya.id_producto }}</td>
                 <td>
                     <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Editar</button>
                     <button type="button" class="btn btn-danger btn-sm mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Eliminar</button>
@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { fetchResenyas } from '@/api';
 
 export default {
     name: "ContactoCrud",
@@ -53,19 +53,12 @@ export default {
             resenyas: [],
         }
     },
-    mounted() {
-        this.fetchResenyas();
-    },
-    methods: {
-        fetchResenyas() {
-            axios
-                .get('http://localhost/back/Resenya/readResenya.php')
-                .then(response => (this.resenyas = response.data))
-                .catch(error => {
-                    console.error('Error al obtener los resenyas:', error);
-                    console.log('Error al obtener los resenyas');
-                });
-        },
+    async mounted() {
+        try {
+            this.resenyas = await fetchResenyas();
+        } catch (error) {
+            console.error('Error en el montaje de reseñas:', error);
+        }
     }
 }
 </script>

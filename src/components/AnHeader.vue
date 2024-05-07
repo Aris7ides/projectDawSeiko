@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg mb-2">
+    <nav id="header" class="navbar navbar-expand-lg mb-2 border-bottom">
         <div class="container-fluid">
             <router-link class="navbar-brand" to="/">
                 <!-- <img class="mx-4 px-4" src="../assets/titulo-removebg-preview.png"> -->
@@ -59,7 +59,7 @@ nav {
     color: #494949;
 }
 
-img {
+#header img {
     width: 100%;
     height: 32px;
 }

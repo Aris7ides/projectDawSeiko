@@ -43,6 +43,7 @@
 
 <script>
 import axios from 'axios'
+import { fetchUsuarios } from '@/api';
 import FormRegister from '../forms/FormRegister.vue';
 
 export default {
@@ -59,18 +60,16 @@ export default {
     components: {
         FormRegister
     },
-    mounted() {
-        this.fetchUsuarios();
+    async mounted() {
+        this.cargarUsuarios();
     },
     methods: {
-        fetchUsuarios() {
-            axios
-                .get('http://localhost/back/Usuario/readUsuario.php')
-                .then(response => (this.usuarios = response.data))
-                .catch(error => {
-                    console.error('Error al obtener los usuarios:', error);
-                    console.log('Error al obtener los usuarios');
-                });
+        async cargarUsuarios() {
+            try {
+                this.usuarios = await fetchUsuarios();
+            } catch (error) {
+                console.error('Error en la carga de usuarios:', error);
+            }
         },
         deleteUsuario(idUsuario) {
             if (window.confirm("seguro que quieres borrar este usuario?")) {
@@ -82,7 +81,7 @@ export default {
                     })
                     .then(response => {
                         if (response.data.success) {
-                            this.fetchUsuarios();
+                            this.cargarUsuarios();
                             console.log('Usuario eliminado correctamente');
                         } else {
                             console.log('Error al eliminar el usuario 2');
@@ -90,18 +89,6 @@ export default {
                     })
                     .catch(error => {
                         console.error('Error al eliminar el usuario:', error);
-
-                        if (error.response) {
-                            if (error.response.status === 400) {
-                                console.log('Error en la solicitud: ' + error.response.data.message);
-                            } else if (error.response.status === 500) {
-                                console.log('Error interno del servidor: ' + error.response.data.message);
-                            } else {
-                                console.log('Error: ' + error.response.data.message);
-                            }
-                        } else {
-                            console.log('Error: ' + error.message);
-                        }
                     });
             }
         },
@@ -123,7 +110,7 @@ export default {
                 })
                 .then(response => {
                     if (response.data.success) {
-                        this.fetchUsuarios();
+                        this.cargarUsuarios();
                         console.log('Usuario actualizado correctamente');
                     } else {
                         console.log(response);
@@ -132,18 +119,6 @@ export default {
                 })
                 .catch(error => {
                     console.error('Error al actualizar el usuario:', error);
-
-                    if (error.response) {
-                        if (error.response.status === 400) {
-                            console.log('Error en la solicitud: ' + error.response.data.message);
-                        } else if (error.response.status === 500) {
-                            console.log('Error interno del servidor: ' + error.response.data.message);
-                        } else {
-                            console.log('Error: ' + error.response.data.message);
-                        }
-                    } else {
-                        console.log('Error: ' + error.message);
-                    }
                 });
         }
     }

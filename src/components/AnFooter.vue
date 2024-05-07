@@ -1,71 +1,87 @@
 <template>
-    <footer class="text-center py-4 mt-4">
-        <div id="footDatos">
-            <pre>
-                Horario de atención al cliente:
-                
-                Lunes a Viernes de 9:00 -21:00
-                Sábados de 9:00 - 14:00
-                
-                WhatsApp: 641012401
-                Correo: infonekogistore@gmail.com
-            </pre>
-        </div>
-        <div>
-            <h3>Redes Sociales</h3>
-            <div id="footRedes" class="d-flex justify-content-center">
-                <router-link to="/" class="mx-3">
-                    <img src="../assets/whatsapp.svg" alt="whatsapp">
-                </router-link>
-                <br>
-                <router-link to="/" class="mx-3">
-                    <img src="../assets/instagram.svg" alt="instagram">
-                </router-link>
+    <div id="footer" class="container-fluid">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-md-3">
+                <div class="text-md-start text-center pt-3">
+                    <h6 class="mb-3">Horario de atención al cliente:</h6>
+                    <div>
+                        <ul>
+                            <li>Lunes a Viernes de 9:00-21:00</li>
+                            <li>Sábados de 9:00-14:00</li>
+                            <li>WhatsApp: 611222333</li>
+                            <li>Correo: info@seikohandmade.es</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center pt-3">
+                    <h6 class="mb-3">Contactanos:</h6>
+                    <router-link to="/" class="mx-4">
+                        <img src="../assets/whatsapp.svg" alt="whatsapp">
+                    </router-link>
+                    <router-link to="/" class="mx-4">
+                        <img src="../assets/instagram.svg" alt="instagram">
+                    </router-link>
+                    <router-link to="/#contacto" class="d-block mt-2 text-primary">Contacto</router-link>
+                </div>
+                <div class="text-md-end text-center pt-3">
+                    <h6 class="mb-3">Enlaces de Interes:</h6>
+                    <ul>
+                        <li>
+                            <router-link to="/">Política de reembolso</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/">Política de privacidad</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/">Términos del servicio</router-link>
+                        </li>
+                        <li>
+                            <router-link to="/">Política de envío</router-link>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <!-- https://www.instagram.com/handmade_seiko -->
-        <!-- https://api.whatsapp.com/send?phone=[numero de telefono] -->
-        <div>
-            <div>
-                <span>© 2024, Seikō</span>
-                <ul>
-                    <li>
-                        <a>Política de reembolso</a>
-                    </li>
-                    <li>
-                        <a >Política de privacidad</a>
-                    </li>
-                    <li>
-                        <a>Términos del servicio</a>
-                    </li>
-                    <li>
-                        <a>Política de envío</a>
-                    </li>
-                </ul>
+            <div class="row text-center pt-3">
+                <span>© 2024, Seikōhandmade</span>
             </div>
+
         </div>
-    </footer>
+    </div>
+    <!-- https://www.instagram.com/handmade_seiko -->
+    <!-- https://api.whatsapp.com/send?phone=[numero de telefono] -->
 </template>
 
 <script>
 
 export default {
-    name: 'menuItems',
-    data() {
-        return {
-
-        }
-    },
-    components: {
-    }
+    name: 'AnFooter',
 }
 </script>
 
 <style>
-footer {
+#footer {
     background-color: #f7aefb;
     color: #494949;
 }
+
+#footer img {
+    width: 32px;
+}
+
+#footer ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+/* a{
+    display: block;
+    width: fit-content;
+} */
+
+/* li{
+    width: fit-content;
+} */
 
 /* footer {
     display: flex;
@@ -85,11 +101,8 @@ footer {
     border: 1px solid;
 } */
 
-#footRedes img {
-    width: 42px;
-}
 
-/* #footEnlaces ul {
+/* footer ul {
     padding: 0;
     margin: 0;
     list-style: none;
