@@ -1,11 +1,10 @@
 <template>
     <div>
         <img :src="'/img/'+producto.img_path" alt="img">
-        <h1>{{ producto.idP }}</h1>
         <h2> {{ producto.nombreP }}</h2>
         <h2> {{ producto.precioP }}</h2>
         <h2> {{ producto.descripcionP }}</h2>
-        <h2> categoria: </h2>
+        <p class="btn btn-outline-primary btn-md"><router-link to="/pago">Comprar</router-link></p>
         <div>
             <hr>
             <FormResenya :name-producto="$route.params.nom" :id-producto="$route.params.id"/>
@@ -14,7 +13,7 @@
 </template>
 
 <script>
-import FormResenya from '../forms/FormResenya.vue'
+import FormResenya from '../forms/FormResenya.vue';
 import { findProducto } from '@/api';
 
 export default {

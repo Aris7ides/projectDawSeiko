@@ -1,5 +1,5 @@
 <template>
-    <div id="footer" class="container-fluid">
+    <div id="footer" class="container-fluid mt-5">
         <div class="container">
             <div class="row row-cols-1 row-cols-md-3">
                 <div class="text-md-start text-center pt-3">

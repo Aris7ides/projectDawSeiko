@@ -1,5 +1,5 @@
 <template>
-    <nav id="header" class="navbar navbar-expand-lg mb-2 border-bottom">
+    <nav id="header" class="navbar navbar-expand-lg mb-2 border-bottom sticky-top">
         <div class="container-fluid">
             <router-link class="navbar-brand" to="/">
                 <!-- <img class="mx-4 px-4" src="../assets/titulo-removebg-preview.png"> -->
