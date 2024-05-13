@@ -9,6 +9,7 @@ import PagCRUD from '@/components/PagCRUD.vue'
 // import FormContact from '@/components/forms/FormContact'
 import FormLogin from '@/components/forms/FormLogin'
 import FormRegister from '@/components/forms/FormRegister.vue'
+import FormCard from '@/components/forms/FormCard.vue'
 
 const routes = [
     { path: '/', component: PagHome },
@@ -18,6 +19,7 @@ const routes = [
     { path: '/login', component: FormLogin },
     { path: '/register', component: FormRegister },
     { path: '/crud', component: PagCRUD },
+    { path: '/pago', component: FormCard },
     // { path: '/contacto', component: FormContact }
 ];
 
