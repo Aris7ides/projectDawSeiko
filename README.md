@@ -1,5 +1,5 @@
 # proyecto-vue
-[Vista de web](https://aris7ides.github.io/projectDawSeiko/)
+Proyecto final de ciclo en DAW 2024, pagina web de tienda.
 
 ## Project setup
 ```
