@@ -31,6 +31,12 @@
           <input class="form-control border border-dark" type="number" v-model="precP" placeholder="precio">
         </div>
       </div>
+      <div class="from-group row my-2">
+        <label class="col-sm-2 col-form-label">Imagenes:</label>
+        <div class="col-sm-10">
+          <input class="form-control border border-dark" type="file" accept="image/*" @change="handleFileChange" required> <!--No tiene v-model revisar si da error-->
+        </div>
+      </div>
       <div class="my-2 text-center">
         <button class="btn btn-success btn-sm mx-2" type="submit">Registrar</button>
         <button class="btn btn-outline-secondary btn-sm mx-2" type="reset">Limpiar</button>
@@ -48,6 +54,7 @@
         <th scope="col">Descripcion</th>
         <th scope="col">Precio</th>
         <th scope="col">Categoria</th>
+        <th scope="col">Imagen</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -66,6 +73,12 @@
           </select>
         </td>
         <!-- <td>{{ getNombreCategoria(producto.id_categoria) }}</td> -->
+        <td>
+          <div v-if="!producto.editando"><input type="text" v-model="producto.img_path" :disabled="!producto.editando"></div>
+          <div v-else>
+            <input type="file" accept="image/*" @change="handleFileChange">
+          </div>
+        </td>
         <td>
           <button class="btn btn-outline-warning btn-sm" v-if="!producto.editando"
             @click="editarProducto(producto)">Editar</button>
@@ -93,6 +106,7 @@ export default {
       nomP: '',
       descP: '',
       precP: '',
+      selectedFile: null,
       showForm: false,
       categorias: [],
       id_categoria: ''
@@ -118,11 +132,14 @@ export default {
       }
     },
     createProducto() {
+      let imgName=this.nomP.replace(" ", "");
+
       const formData = new FormData();
       formData.append('nomP', this.nomP);
       formData.append('descP', this.descP);
       formData.append('precioP', this.precP);
       formData.append('id_categoria', this.id_categoria);
+      formData.append('img_path', imgName+"-"+this.selectedFile.name);
 
       axios
         .post('http://localhost/back/Producto/createProducto.php', formData, {
@@ -132,16 +149,20 @@ export default {
         })
         .then(response => {
           if (response.data.success) {
+            this.uploadImage(imgName);
             this.cargarProductos();
+
+            //limpio formulario
             this.nomP = '';
             this.descP = '';
             this.precP = '';
+            this.id_categoria = '';
           } else {
-            console.log('Error al crear el producto');
+            console.log('Error al crear el producto [productoCRUD]');
           }
         })
         .catch(error => {
-          console.error('Error al crear el producto:', error);
+          console.error('Error al crear el producto [productoCRUD]:', error);
         });
     },
     deleteProducto(producto) {
@@ -179,6 +200,7 @@ export default {
       formData.append('descP', producto.descripcionP);
       formData.append('precioP', producto.precioP);
       formData.append('id_categoria', producto.id_categoria);
+      formData.append('img_path', this.selectedFile ? this.selectedFile.name : producto.img_path);
 
       axios
         .post('http://localhost/back/Producto/updateProducto.php', formData, {
@@ -199,9 +221,30 @@ export default {
           console.error('Error al actualizar el producto:', error);
         });
     },
-    getNombreCategoria(idCategoria) {
-      const categoria = this.categorias.find(cat => cat.id === idCategoria);
-      return categoria ? categoria.categoria : 'no';
+    // getNombreCategoria(idCategoria) {
+    //   const categoria = this.categorias.find(cat => cat.id === idCategoria);
+    //   return categoria ? categoria.categoria : 'no';
+    // },
+    handleFileChange(event) {
+      this.selectedFile = event.target.files[0];
+    },
+    async uploadImage(nomP) {
+      try {
+        const formData = new FormData();
+        formData.append('image', this.selectedFile);
+        formData.append('nomP', nomP);
+
+         await axios.post('http://localhost/back/upload.php', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+
+        // Lógica para guardar el nombre de la imagen en la base de datos
+        // Aquí puedes enviar imageName al servidor PHP para almacenarlo en la base de datos
+      } catch (error) {
+        console.error('Error al subir la imagen:', error);
+      }
     }
   }
 }

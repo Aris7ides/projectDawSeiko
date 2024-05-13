@@ -3,7 +3,8 @@
         <div class="row row-cols-2 row-cols-md-4">
             <div v-for="p in productos" :key="p.idP" class="border">
                 <div>
-                    <img src="../../assets/LogoSinFondo.png" :alt="'imagen' + p.nombreP" width="100px" height="100px">
+                    <!-- :src="p.img_path ? generateImgPath(p.img_path) : '../../assets/img/logo.png'" -->
+                    <img :src="p.img_path ? generateImgPath(p.img_path) : '../../assets/img/logo.png'" :alt="'imagen' + p.img_path" width="100px" height="100px">
                     <p><router-link :to="'/producto/'+ p.nombreP + '/' +  p.idP ">{{ p.nombreP }}</router-link></p>
                     <span>{{ p.precioP }} €</span>
                 </div>
@@ -20,6 +21,7 @@ export default {
     data() {
         return {
             productos: [],
+            pathDirectory : '/img/',
         }
     },
     async mounted() {
@@ -33,6 +35,9 @@ export default {
                 console.error('Error en la carga de productos:', error);
             }
         },
+        generateImgPath(imgName) {
+            return this.pathDirectory+imgName;
+        }
     }
 }
 </script>

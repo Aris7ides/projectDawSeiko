@@ -18,7 +18,7 @@
         <router-link to="/login" class="nav-link">Login</router-link>
       </li>
       <li class="nav-item">
-        <router-link to="/crud" class="nav-link">CrudPrueba</router-link>
+        <router-link to="/crud" class="nav-link">Administrar</router-link>
       </li>
     </ul>
   </div>
