@@ -15,11 +15,20 @@
                 <ListMenu />
                 <div class="d-flex mx-2">
                     <div class="m-2">
-                        <button class="btn btn-sm btn-secondary">
+                        <p v-if="this.$store.state.user!=''">{{ usuario }}</p>
+                    </div>
+                    <div class="m-2">
+                        <button class="btn btn-sm btn-secondary" v-if="this.$store.state.user==''">
                             <router-link to="/login" class="d-flex nav-link">
                                 Login
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
                             </router-link>
+                        </button>
+                        <button class="btn btn-sm btn-secondary" v-if="this.$store.state.user!=''">
+                            <span @click="logOut" class="d-flex nav-link">
+                                LogOut
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16"><path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/></svg>
+                            </span>
                         </button>
                     </div>
                     <div class="m-2">
@@ -40,12 +49,7 @@
 
 <script>
 import ListMenu from './ListMenu.vue'
-
-// let nav = "";
-
-// window.addEventListener("load", function () {
-//     nav = document.getElementById("navbarColor03");
-// });
+import { mapMutations } from 'vuex';
 
 window.addEventListener('scroll', function() {
         var nav = document.getElementById('header');
@@ -58,19 +62,23 @@ window.addEventListener('scroll', function() {
 
 export default {
     name: 'Header-component',
-    methods: {
-        // openNav: function () {
-        //     if (nav.style.display == "none" || nav.style.display == "") {
-        //         // document.body.style.overflow = "hidden";
-        //         nav.style.display = "block";
-        //     } else {
-        //         nav.style.display = "none";
-        //         // document.body.style.overflow = "auto";
-        //     }
-        // }
+    computed: {
+        usuario() {
+            return this.$store.state.user;
+        }
     },
     components: {
         ListMenu
+    },
+    methods: {
+        ...mapMutations(['setUser']),
+        ...mapMutations(['setToken']),
+        ...mapMutations(['setIsAdmin']),
+        logOut(){
+            this.setUser('');
+            this.setIsAdmin(false);
+            this.setToken('');
+        }
     }
 }
 
@@ -85,80 +93,9 @@ export default {
     color: #494949;
 }
 
-/* nav#header {
-    background-color: #f7aefb;
-    color: #494949;
-} */
-
 #header img {
     width: 100%;
     height: 64px;
 }
 
-/* #header {
-    background-color: #f7aefb;
-    color: #494949;
-    font-family: "Dancing Script", cursive;
-    font-size: 1.5em;
-    font-weight: bold;
-} 
- #containerHeader {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-    height: 90px;
-}
-
-
-#menuMobile img {
-    height: 32px;
-}
-
-nav {
-    display: none;
-}
-
-/* nav ul {
-    list-style: none;
-} */
-
-/**/
-
-
-/* 
-@media only screen and (min-width:600px) {
-    #menuMobile{
-        display: none;
-    }
-
-    header p{
-        display: block;
-        margin: 0;
-    }
-
-    nav{
-        display: block;
-        text-align: center;
-    }
-
-    nav ul{
-        display: block;
-    }
-    
-    nav li{
-        display: inline;
-        margin: 1vw;
-    }
-
-    #containerHeader{
-        flex-direction: column;
-        justify-content: center;
-        height: auto;
-    }
-
-    #logo{
-        text-align: center;
-    }
-} */
 </style>

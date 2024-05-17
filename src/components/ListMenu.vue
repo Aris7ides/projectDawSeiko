@@ -17,7 +17,7 @@
       <!-- <li class="nav-item">
         <router-link to="/login" class="nav-link">Login</router-link>
       </li> -->
-      <li class="nav-item">
+      <li class="nav-item" v-if="this.$store.state.isAdmin">
         <router-link to="/crud" class="nav-link">Administrar</router-link>
       </li>
     </ul>

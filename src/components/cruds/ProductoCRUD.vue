@@ -169,6 +169,7 @@ export default {
       const formData = new FormData();
       formData.append('idToDelete', producto.idP);
       formData.append('id_categoria', producto.id_categoria);
+      formData.append('jwt', this.$store.state.jwt);
 
       if (window.confirm("seguro que quieres borrar este producto?")) {
         axios
