@@ -17,7 +17,7 @@
                     <div class="m-2">
                         <p v-if="this.$store.state.user!=''">{{ usuario }}</p>
                     </div>
-                    <div class="m-2">
+                    <div class="m-2 ">
                         <button class="btn btn-sm btn-secondary" v-if="this.$store.state.user==''">
                             <router-link to="/login" class="d-flex nav-link">
                                 Login
