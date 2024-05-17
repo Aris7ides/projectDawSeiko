@@ -1,7 +1,7 @@
 <template>
-    <div id="footer" class="container-fluid mt-5">
+    <div id="footer" class="container-fluid mt-4 bg-secondary text-white">
         <div class="container">
-            <div class="row row-cols-1 row-cols-md-3">
+            <!-- <div class="row row-cols-1 row-cols-md-3">
                 <div class="text-md-start text-center pt-3">
                     <h6 class="mb-3">Horario de atención al cliente:</h6>
                     <div>
@@ -40,11 +40,10 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
             <div class="row text-center pt-3">
                 <span>© 2024, Seikōhandmade</span>
             </div>
-
         </div>
     </div>
     <!-- https://www.instagram.com/handmade_seiko -->
@@ -59,10 +58,10 @@ export default {
 </script>
 
 <style>
-#footer {
+/* #footer {
     background-color: #f7aefb;
     color: #494949;
-}
+} */
 
 #footer img {
     width: 32px;

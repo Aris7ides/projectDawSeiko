@@ -140,6 +140,7 @@ export default {
       formData.append('precioP', this.precP);
       formData.append('id_categoria', this.id_categoria);
       formData.append('img_path', imgName+"-"+this.selectedFile.name);
+      // formData.append('jwt', this.$store.state.jwt);
 
       axios
         .post('http://localhost/back/Producto/createProducto.php', formData, {
@@ -169,6 +170,7 @@ export default {
       const formData = new FormData();
       formData.append('idToDelete', producto.idP);
       formData.append('id_categoria', producto.id_categoria);
+      // formData.append('jwt', this.$store.state.jwt);
 
       if (window.confirm("seguro que quieres borrar este producto?")) {
         axios

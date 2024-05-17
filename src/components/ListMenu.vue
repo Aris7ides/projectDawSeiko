@@ -14,10 +14,10 @@
       <li class="nav-item">
         <router-link to="/#contacto" class="nav-link">Contacto</router-link> <!-- REVISAR RUTA-->
       </li>
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <router-link to="/login" class="nav-link">Login</router-link>
-      </li>
-      <li class="nav-item">
+      </li> -->
+      <li class="nav-item" v-if="this.$store.state.isAdmin">
         <router-link to="/crud" class="nav-link">Administrar</router-link>
       </li>
     </ul>

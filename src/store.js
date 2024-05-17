@@ -1,17 +1,28 @@
-// import Vue from 'vue';
-// import Vuex from 'vuex';
 import { createStore } from 'vuex'; // Asegúrate de usar createStore en lugar de Vue.use(Vuex);
+import createPersistedState from 'vuex-persistedstate';
 
 export default createStore({
+  plugins: [createPersistedState()],
   state: {
+    user: '',
+    token:'',
+    isAdmin:false,
     count: 0
     // Definir tu estado inicial aquí
   },
   mutations: {
     increment(state) {
       state.count++;
+    },
+    setUser(state, newUser) {
+      state.user = newUser;
+    },
+    setToken(state, newToken){
+      state.token = newToken;
+    },
+    setIsAdmin(state, bool){
+      state.isAdmin = bool;
     }
-    // Definir tus mutaciones aquí
   },
   actions: {
     // Definir tus acciones aquí
@@ -20,35 +31,3 @@ export default createStore({
     // Definir tus getters aquí
   }
 });
-
-
-// Vue.use(Vuex);
-
-// export default new Vuex.Store({
-//   state: {
-//     // Aquí puedes definir tus variables de estado inicial
-//     // Ejemplo:
-//     counter: 0
-//   },
-//   mutations: {
-//     // Aquí defines las mutaciones para cambiar el estado
-//     // Ejemplo:
-//     INCREMENT(state) {
-//       state.counter++;
-//     }
-//   },
-//   actions: {
-//     // Aquí defines las acciones para realizar cambios en el estado
-//     // Ejemplo:
-//     increment(context) {
-//       context.commit('INCREMENT');
-//     }
-//   },
-//   getters: {
-//     // Aquí defines los getters para acceder al estado de una manera calculada
-//     // Ejemplo:
-//     counterSquared(state) {
-//       return state.counter * state.counter;
-//     }
-//   }
-// });

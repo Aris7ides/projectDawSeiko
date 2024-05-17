@@ -71,7 +71,6 @@ export default {
                         this.correo = '';
                         this.passwd = '';
                         this.passwd2 = '';
-                        // alert('usuario creado');
                         window.location.href='/login';
                     } else {
                         console.log('Error al crear el usuario');
