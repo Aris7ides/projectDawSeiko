@@ -28,7 +28,7 @@
       <div class="from-group row my-2">
         <label class="col-sm-2 col-form-label">Precio:</label>
         <div class="col-sm-10">
-          <input class="form-control border border-dark" type="number" v-model="precP" placeholder="precio">
+          <input class="form-control border border-dark" type="text" v-model="precP" placeholder="precio">
         </div>
       </div>
       <div class="from-group row my-2">
@@ -149,6 +149,7 @@ export default {
           }
         })
         .then(response => {
+          console.log(response);
           if (response.data.success) {
             this.uploadImage(imgName);
             this.cargarProductos();
