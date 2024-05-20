@@ -1,6 +1,6 @@
 <template>
     <div id="FormContacto" class="container mb-4">
-        <h4 class="text-center">Dejar un mensaje:</h4>
+        <!-- <h4 class="text-center">Dejar un mensaje:</h4> -->
         <div class="row row-cols-1 row-cols-md-2 container">
             <div class="col-md-8 container mb-4">
                 <form @submit.prevent="createContacto" class="form-horizontal">
@@ -39,7 +39,7 @@
                     </fieldset>
                 </form>
             </div>
-            <div class="col-md-3 bg-secondary text-white rounded container my-auto">
+            <div class="col-md-3 bg-secondary text-white rounded container my-auto d-sm-none">
                 <p class="h5 text-center">Datos de contacto:</p>
                 <div class="d-flex flex-column align-items-start">
                     <div class="d-flex align-items-center">

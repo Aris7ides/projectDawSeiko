@@ -12,9 +12,9 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ListMenu />
-                <div class="d-flex mx-2">
+                <div class="d-flex mx-2 align-items-center">
                     <div class="m-2">
-                        <p v-if="this.$store.state.user != ''">{{ usuario }}</p>
+                        <p v-if="this.$store.state.user != ''" class="btn btn-secondary btn-sm d-inline">{{ usuario }}</p>
                     </div>
                     <div class="m-2 ">
                         <button class="btn btn-sm btn-info text-light" v-if="this.$store.state.user == ''">

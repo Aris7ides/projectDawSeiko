@@ -1,8 +1,13 @@
 <template>
     <div id="FormResenya" class="container mb-4">
-        <h4 class="text-center">Dejar una reseña</h4>
         <div class="row row-cols-1 row-cols-md-2 container">
             <div class="col-md-8 container mb-4">
+                <div class="mb-2 text-center">
+                    <h4 class="d-sm-inline">Dejar una reseña </h4>
+                    <svg v-for="n in 5" :key="n" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+                    </svg>
+                </div>
                 <form @submit.prevent="createResenya" class="form-horizontal">
                     <fieldset>
                         <div class="form-group row">
@@ -36,26 +41,22 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center text-lg-start row row-cols-1 row-cols-md-3">
-                                <button type="reset"
-                                    class="btn btn-outline-secondary btn-sm mx-sm-auto m-1">Limpiar</button>
-                                <button type="submit" class="btn btn-secondary btn-sm mx-sm-auto m-1">Enviar</button>
+                            <div class="text-center text-lg-start row row-cols-1">
+                                <!-- <button type="reset"
+                                    class="btn btn-outline-secondary btn-sm mx-sm-auto m-1">Limpiar</button> -->
+                                <button type="submit" class="btn btn-primary btn-sm mx-sm-auto m-1">Enviar</button>
                             </div>
                         </div>
                     </fieldset>
                 </form>
             </div>
-            <div class="col-md-3 bg-secondary text-white rounded container my-auto">
-                <p class="h5 text-center">Algo</p>
-                <div class="d-flex flex-column align-items-start">
-                    <div class="d-flex align-items-center">
-                    </div>
-                    <div class="d-flex align-items-center">
-                    </div>
-                    <div class="d-flex align-items-center">
-                    </div>
-                </div>
-            </div>
+            <!-- <div class="col-md-3 text-white rounded container my-auto">
+                
+                <svg v-for="n in 5" :key="n" xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+  <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+</svg>
+               
+            </div> -->
         </div>
     </div>
     <!-- <form @submit.prevent="createResenya" class="form-horizontal">
