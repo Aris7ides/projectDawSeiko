@@ -11,7 +11,7 @@
                 </select>
             </div>
             <span v-if="buttonFilter" class="d-inline text-danger col-sm-2 text-center text-sm-start my-2 my-sm-0" @click="borrarFiltro">Borrar filtros</span>
-            <span class="d-inline text-muted col-sm-2 text-center">Total productos ({{ productosFiltrados.length }})</span>
+            <span class="d-inline text-muted col-sm-2 text-center underline-hover">Total productos ({{ productosFiltrados.length }})</span>
         </div>
         <div class="row row-cols-2 row-cols-sm-4 justify-content-center">
             <div v-for="p in productosFiltrados" :key="p.idP" class="m-sm-2 mb-3">

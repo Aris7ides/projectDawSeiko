@@ -38,8 +38,8 @@ export const fetchCategorias = async () => {
         const response = await axios.get('http://localhost/back/Categoria/readCategoria.php');
         return response.data;
     } catch (error) {
-        console.error('Error al obtener las categorias:', error);
-        console.log('Error al obtener las categorias');
+        console.error('Error al obtener las categorías:', error);
+        console.log('Error al obtener las categorías');
     }
 };
 

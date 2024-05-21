@@ -11,7 +11,7 @@
                 :class="{'active' : botonActivo}"
                 :disabled="botonActivo && !catg" 
                 @click="catg = !catg, botonActivo = !botonActivo"
-                >categorias
+                >categorías
             </button>
             <button  class="btn btn-secondary"
                 :class="{'active' : botonActivo}"
@@ -69,8 +69,8 @@ export default {
     name: 'PagCrud',
     data() {
         return {
-            botonActivo: null,
-            prod: false,
+            botonActivo: true,
+            prod: true,
             cont: false,
             catg: false,
             res: false,

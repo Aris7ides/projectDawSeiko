@@ -14,22 +14,30 @@
         </div>
       </div>
       <div class="mt-sm-4">
-        <div>
-          <h4>Categorias populares ahora mismo</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos eius quod facere, a, consequuntur fuga sunt
-            eum
-            laboriosam debitis hic, doloribus voluptas accusamus possimus tempore? Dolore dignissimos minima atque
-            minus.
-          </p>
+        <div v-if="categorias && categorias.length > 0">
+          <h4 class="mb-4">Categorías populares ahora mismo</h4>
+          <div class="row row-cols-1 row-cols-sm-4">
+            <div v-for="i in categoriasImg" :key="i.idC" class="mb-2">
+              <router-link class="text-dark d-flex flex-column align-items-center" :to="'/producto/'">
+                <img :src="'/img/'+i.imgPath" alt="a" class="border border-dark rounded-circle bounce" style="width: 175px; height: 175px;">
+                <span>{{ i.nomC }}</span>
+              </router-link>
+            </div>
+          </div>
+          <button class="btn btn-warning m-4 bounce underline-hover">Ver productos</button>
         </div>
         <hr>
-        <div>
-          <h4>Productos populares ahora mismo</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos eius quod facere, a, consequuntur fuga sunt
-            eum
-            laboriosam debitis hic, doloribus voluptas accusamus possimus tempore? Dolore dignissimos minima atque
-            minus.
-          </p>
+        <div v-if="productos && productos.length > 0">
+          <h4 class="mb-4">Productos populares ahora mismo</h4>
+          <div class="row row-cols-1 row-cols-sm-4">
+            <div v-for="i in 4" :key="i" class="mb-2">
+              <router-link class="text-dark d-flex flex-column align-items-center" :to="'/producto/' + productos[i].nombreP + '/' + productos[i].idP">
+                <img :src="'/img/'+productos[i].img_path" alt="a" class="border border-dark rounded-circle bounce" style="width: 175px; height: 175px;">
+                <span>{{ productos[i].nombreP }}</span>
+              </router-link>
+            </div>
+          </div>
+          <button class="btn btn-warning m-4 bounce underline-hover">Ver mas productos</button>
         </div>
         <hr>
         <div>
@@ -51,16 +59,54 @@
 
 <script>
 import FormContact from '../forms/FormContact.vue'
+import { fetchCategorias, fetchProductos } from '@/api';
 
 export default {
   name: 'PagHome',
   data() {
     return {
-
+      productos: [],
+      categorias: [],
+      categoriasImg: []
     }
   },
   components: {
     FormContact
-  }
+  },
+  async mounted() {
+    await this.cargarProductos();
+    await this.cargarCategorias();
+    this.generateCategoria();
+  },
+  methods: {
+    async cargarProductos() {
+      try {
+        this.productos = await fetchProductos();
+      } catch (error) {
+        console.error('Error en la carga de productos:', error);
+      }
+    },
+    async cargarCategorias() {
+      try {
+        this.categorias = await fetchCategorias();
+      } catch (error) {
+        console.error('Error en la carga de categorias:', error);
+      }
+    },
+    generateCategoria() {
+      let productox=[];
+      let categoriax=[];
+      for (let i = 0; i < 4; i++) {
+        categoriax=this.categorias[i];
+        for (let j = 0; j < this.productos.length; j++) {
+          if(categoriax.id === this.productos[j].id_categoria){
+            productox=this.productos[j];
+          }
+        }
+        this.categoriasImg.push({"idP":productox.idP, "imgPath": productox.img_path, "idC": categoriax.id, "nomC": categoriax.categoria});
+        
+      }
+    }
+  },
 }
 </script>

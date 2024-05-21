@@ -109,6 +109,7 @@ export default {
             this.setUser('');
             this.setIsAdmin(false);
             this.setToken('');
+            window.location.href = '/';
         }
     }
 }
