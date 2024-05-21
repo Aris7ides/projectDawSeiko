@@ -17,15 +17,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-lg-2">Correo Electronico *</label>
+                            <label class="col-lg-2">Email*</label>
                             <div class="col-lg-10">
-                                <input type="email" v-model="correo" class="form-control border border-dark mb-2" placeholder="Correo Electronico" required />
+                                <input type="email" v-model="correo" class="form-control border border-dark mb-2" placeholder="Correo electrónico" required />
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-lg-2">Puntuación *</label>
                             <div class="col-lg-10">
-                                <input type="number" v-model="calific" class="form-control border border-dark mb-2" placeholder="5" max="5" min="1" required />
+                                <input type="number" v-model="calific" class="form-control border border-dark mb-2" placeholder="1/5" max="5" min="1" required />
                             </div>
                         </div>
                         <div class="form-group row">

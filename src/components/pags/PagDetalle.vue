@@ -6,9 +6,7 @@
                 <img class="img-fluidDetalle" :src="'/img/' + producto.img_path" alt="img">
             </div>
             <div class="col-sm-6 align-content-center text-center bg-rosa rounded pt-2">
-                <h4 class="border rounded border-secondary p-3 bg-light"> {{ producto.nombreP }} - {{ producto.precioP
-                    }} €</h4>
-                <!-- <h4 > {{ producto.precioP }} €</h4> -->
+                <h4 class="border rounded border-secondary p-3 bg-light"> {{ producto.nombreP }} - {{ producto.precioP }} €</h4>
                 <div class="my-2">
                     <svg v-for="n in 5" :key="n" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill=""
                         class="bi bi-star-fill" viewBox="0 0 16 16">

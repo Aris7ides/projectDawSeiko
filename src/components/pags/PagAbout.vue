@@ -12,7 +12,7 @@
                 </p>
             </div>
             <div>
-                <img src="../../assets/image-2-scaled-e1581627341749-750x563.jpg" class="pagAbout rounded img-fluid mx-auto d-block">
+                <img src="../../assets/IMG_8493.jpg" class="pagAbout rounded img-fluid mx-auto d-block">
             </div>
         </div>
         <div class="row row-cols-1 row-cols-md-2 pt-md-4">
@@ -25,7 +25,7 @@
                     </p>
                 </div>
                 <div class="order-md-first">
-                    <img src="../../assets/Foto-que--muestra-un-so-1200x686.png" class="pagAbout rounded img-fluid mx-auto d-block">
+                    <img src="../../assets/IMG_8494.jpg" class="pagAbout rounded img-fluid mx-auto d-block">
                 </div>
         </div>
     </div>
@@ -34,6 +34,6 @@
 <style>
 img.pagAbout {
     width: 80%;
-    height: 90%;
+    height: 50vh;
 }
 </style>
