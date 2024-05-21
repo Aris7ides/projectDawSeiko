@@ -32,14 +32,14 @@
                         </div>
                         <div class="form-group">
                             <div class="text-center text-lg-start row  row-cols-1 row-cols-md-3">
-                                <button type="reset" class="btn btn-outline-secondary btn-sm mx-sm-auto m-1">Limpiar</button>
-                                <button type="submit" class="btn btn-secondary btn-sm mx-sm-auto m-1">Enviar</button>
+                                <button type="reset" class="btn btn-outline-warning btn-sm mx-sm-auto m-1">Limpiar</button>
+                                <button type="submit" class="btn btn-primary btn-sm mx-sm-auto m-1">Enviar</button>
                             </div>
                         </div>
                     </fieldset>
                 </form>
             </div>
-            <div class="col-md-3 bg-secondary text-white rounded container my-auto d-sm-none">
+            <div class="col-md-3 bg-light border border-dark rounded container my-auto d-sm-none">
                 <p class="h5 text-center">Datos de contacto:</p>
                 <div class="d-flex flex-column align-items-start">
                     <div class="d-flex align-items-center">
