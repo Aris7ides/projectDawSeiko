@@ -1,6 +1,27 @@
 <template>
-    <div id="footer" class="container-fluid mt-4 bg-secondary text-white">
-        <div class="container">
+    <div id="footer" class="container-fluid bg-secondary text-dark">
+        <div class="container pt-2">
+            <div class="row justify-content-center">
+                <div class="col-12 text-center mb-2">
+                    <span class="h6">Entérate de todas las novedades ♡</span>
+                </div>
+                <div class="col-md-4 col-12">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Correo electrónico"
+                            aria-label="Correo electrónico">
+                        <button class="btn btn-light" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                                class="bi bi-arrow-right-circle-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row text-center pt-1">
+                <span>© 2024, Seikōhandmade</span>
+            </div>
             <!-- <div class="row row-cols-1 row-cols-md-3">
                 <div class="text-md-start text-center pt-3">
                     <h6 class="mb-3">Horario de atención al cliente:</h6>
@@ -41,9 +62,6 @@
                     </ul>
                 </div>
             </div> -->
-            <div class="row text-center pt-3">
-                <span>© 2024, Seikōhandmade</span>
-            </div>
         </div>
     </div>
     <!-- https://www.instagram.com/handmade_seiko -->

@@ -1,8 +1,8 @@
 <template>
-    <div id="FormContacto" class="container mb-4">
+    <div id="FormContacto" class="container mb-3">
         <!-- <h4 class="text-center">Dejar un mensaje:</h4> -->
         <div class="row row-cols-1 row-cols-md-2 container">
-            <div class="col-md-8 container mb-4">
+            <div class="col-md-8 container mb-2">
                 <form @submit.prevent="createContacto" class="form-horizontal">
                     <fieldset>
                         <div class="form-group row mb-2">
@@ -31,9 +31,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center text-lg-start row  row-cols-1 row-cols-md-3">
-                                <button type="reset" class="btn btn-outline-warning btn-sm mx-sm-auto m-1">Limpiar</button>
-                                <button type="submit" class="btn btn-primary btn-sm mx-sm-auto m-1">Enviar</button>
+                            <div class="text-center text-lg-start row row-cols-1 row-cols-sm-2">
+                                <button type="reset" class="btn btn-outline-warning btn-sm mx-sm-auto m-1 col-sm-2">Limpiar</button>
+                                <button type="submit" class="btn btn-primary btn-sm mx-sm-auto m-1 col-sm-8">Enviar</button>
                             </div>
                         </div>
                     </fieldset>
@@ -42,17 +42,17 @@
             <div class="col-md-3 bg-light border border-dark rounded container my-auto d-sm-none">
                 <p class="h5 text-center">Datos de contacto:</p>
                 <div class="d-flex flex-column align-items-start">
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center m-3">
                         <img src="../../assets/phone.svg" alt="" width="18px" class="me-2">
-                        <p class="d-inline">+34 611222333</p>
+                        <p class="d-inline m-0">+34 611222333</p>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center m-3">
                         <img src="../../assets/mail.svg" alt="" width="18px" class="me-2">
-                        <p class="d-inline">info@seikohandmade.es</p>
+                        <p class="d-inline m-0">info@seikohandmade.es</p>
                     </div>
-                    <div class="d-flex align-items-center">
+                    <div class="d-flex align-items-center m-3">
                         <img src="../../assets/location.svg" alt="" width="18px" class="me-2">
-                        <p class="d-inline">Valencia, España</p>
+                        <p class="d-inline m-0">Valencia, España</p>
                     </div>
                 </div>
             </div>

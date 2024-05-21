@@ -14,28 +14,36 @@
         </div>
       </div>
       <div class="mt-sm-4">
-        <h4>Productos populares ahora mismo</h4>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos eius quod facere, a, consequuntur fuga sunt eum
-          laboriosam debitis hic, doloribus voluptas accusamus possimus tempore? Dolore dignissimos minima atque minus.
-        </p>
-      </div>
-      <hr>
-      <div>
-        <h4>Categorias populares ahora mismo</h4>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos eius quod facere, a, consequuntur fuga sunt eum
-          laboriosam debitis hic, doloribus voluptas accusamus possimus tempore? Dolore dignissimos minima atque minus.
-        </p>
-      </div>
-      <hr>
-      <div>
-        <h4>Reseñas de nuestros clientes</h4>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos eius quod facere, a, consequuntur fuga sunt eum
-          laboriosam debitis hic, doloribus voluptas accusamus possimus tempore? Dolore dignissimos minima atque minus.
-        </p>
+        <div>
+          <h4>Categorias populares ahora mismo</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos eius quod facere, a, consequuntur fuga sunt
+            eum
+            laboriosam debitis hic, doloribus voluptas accusamus possimus tempore? Dolore dignissimos minima atque
+            minus.
+          </p>
+        </div>
+        <hr>
+        <div>
+          <h4>Productos populares ahora mismo</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos eius quod facere, a, consequuntur fuga sunt
+            eum
+            laboriosam debitis hic, doloribus voluptas accusamus possimus tempore? Dolore dignissimos minima atque
+            minus.
+          </p>
+        </div>
+        <hr>
+        <div>
+          <h4>Reseñas de nuestros clientes</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eos eius quod facere, a, consequuntur fuga sunt
+            eum
+            laboriosam debitis hic, doloribus voluptas accusamus possimus tempore? Dolore dignissimos minima atque
+            minus.
+          </p>
+        </div>
       </div>
     </div>
     <hr>
-    <div id="contacto">
+    <div id="contacto" class="col-12 d-flex justify-content-center">
       <FormContact />
     </div>
   </div>
