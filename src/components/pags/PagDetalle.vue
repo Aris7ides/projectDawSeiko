@@ -13,19 +13,19 @@
                         <path
                             d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                     </svg>
-                    <span>(0)</span> <!--Añadir conteo de reseñas de ese producto-->
+                    <span>({{ resenyas.length }})</span> <!--Añadir conteo de reseñas de ese producto-->
                 </div>
                 <p class="border rounded border-secondary p-3 bg-light"> {{ producto.descripcionP }}</p>
                 <div class="row justify-content-center">
-                    <p class="btn btn-outline-success btn-sm mx-2 col-6 col-md-4 text-dark underline-hover">
-                        <router-link to="/pago" class="text-decoration-none text-dark">
+                    <p class="btn btn-outline-success btn-sm mx-2 col-6 col-md-4 text-dark underline-hover" @click="addToCart(producto)">
+                        <!-- <router-link to="/pago" class="text-decoration-none text-dark"> -->
                             AÑADIR
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                 class="bi bi-bag" viewBox="0 0 16 16">
                                 <path
                                     d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1m3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
                             </svg>
-                        </router-link>
+                        <!-- </router-link> -->
                     </p>
                     <p class="btn btn-warning btn-sm mx-2 col-6 col-md-4 underline-hover">
                         <router-link to="/pago" class="text-decoration-none text-dark">
@@ -35,6 +35,27 @@
                 </div>
             </div>
         </div>
+        <div v-if="resenyas && resenyas.length > 0" class="text-center">
+          <hr>
+          <h4 class="mb-4">Reseñas sobre este producto</h4>
+          <div class="row row-cols-1">
+            <div v-for="i in resenyas.length" :key="i" class="mb-2 border rounded bg-light border-dark">
+                <div class="row">
+                    <span class="h6 mt-2">{{ resenyas[i - 1]?.nombre }}</span>
+                    <div class="my-2">
+                      <span>({{ resenyas[i -1].calific }})</span>
+                      <svg v-for="n in parseInt(resenyas[i -1].calific)" :key="n" xmlns="http://www.w3.org/2000/svg"
+                        width="18" height="18" fill="yellow" class="bi bi-star-fill" viewBox="0 0 16 16">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                    </div>
+                    <span>{{ resenyas[i - 1]?.comentario }}</span>
+                </div>
+                </div>
+              </div>
+            </div>
+          
         <div>
             <hr>
             <FormResenya :name-producto="$route.params.nom" :id-producto="$route.params.id" />
@@ -44,14 +65,16 @@
 
 <script>
 import FormResenya from '../forms/FormResenya.vue';
-import { findProducto } from '@/api';
+import { findProducto, findResenya } from '@/api';
+import { mapMutations } from 'vuex';
 
 export default {
     name: 'PagDetalle',
     data() {
         return {
             paramId: this.$route.params.id,
-            producto: ''
+            producto: '',
+            resenyas: [],
         }
     },
     components: {
@@ -59,6 +82,7 @@ export default {
     },
     async mounted() {
         await this.getProducto();
+        await this.getResenyas();
     },
     methods: {
         async getProducto() {
@@ -68,7 +92,16 @@ export default {
             } catch (e) {
                 console.log("Error al getProducto: " + e)
             }
-        }
+        },
+        async getResenyas() {
+            try {
+                const res = await findResenya(this.paramId);
+                this.resenyas = res;
+            } catch (e) {
+                console.log("Error al getProducto: " + e)
+            }
+        },
+        ...mapMutations(['addToCart']),
     }
 }
 </script>

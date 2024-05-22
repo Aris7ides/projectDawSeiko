@@ -33,7 +33,7 @@
                         <div class="form-group">
                             <div class="text-center text-lg-start row row-cols-1 row-cols-sm-2">
                                 <button type="reset" class="btn btn-outline-warning btn-sm mx-sm-auto m-1 col-sm-2">Limpiar</button>
-                                <button type="submit" class="btn btn-primary btn-sm mx-sm-auto m-1 col-sm-8">Enviar</button>
+                                <button type="submit" class="btn btn-rosa border border-dark btn-sm mx-sm-auto m-1 col-sm-6">Enviar</button>
                             </div>
                         </div>
                     </fieldset>

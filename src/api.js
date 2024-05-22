@@ -64,3 +64,13 @@ export const fetchResenyas = async () => {
         console.log('Error al obtener las resenyas');
     }
 };
+
+//Reseñas by id
+export const findResenya = async (idp) => {
+    try {
+        const response = await axios.get(`http://localhost/back/Resenya/findResenya.php?idP=${idp}`);
+        return response.data;
+    } catch (e) {
+        console.log("Error al buscar resenya por id, findResenya");
+    }
+}

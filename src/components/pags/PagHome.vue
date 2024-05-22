@@ -18,10 +18,10 @@
           <h4 class="mb-4">Categorías populares ahora mismo</h4>
           <div class="row row-cols-1 row-cols-sm-4">
             <div v-for="i in categoriasImg" :key="i.idC" class="mb-2">
-              <router-link class="text-dark d-flex flex-column align-items-center" :to="'/productos'">
+              <router-link class="text-dark d-flex flex-column align-items-center text-decoration-none" :to="'/productos'">
                 <img :src="'/img/' + i.imgPath" alt="a" class="border border-dark rounded-circle bounce"
                   style="width: 175px; height: 175px;">
-                <span>{{ i.nomC }}</span>
+                <span class="underline-hover">{{ i.nomC }}</span>
               </router-link>
             </div>
           </div>
@@ -33,11 +33,11 @@
           <h4 class="mb-4">Productos populares ahora mismo</h4>
           <div class="row row-cols-1 row-cols-sm-4">
             <div v-for="i in 4" :key="i" class="mb-2">
-              <router-link class="text-dark d-flex flex-column align-items-center"
+              <router-link class="text-dark d-flex flex-column align-items-center text-decoration-none"
                 :to="'/producto/' + productos[i].nombreP + '/' + productos[i].idP">
                 <img :src="'/img/' + productos[i].img_path" alt="a" class="border border-dark rounded-circle bounce"
                   style="width: 175px; height: 175px;">
-                <span>{{ productos[i].nombreP }}</span>
+                <span class="underline-hover">{{ productos[i].nombreP }}</span>
               </router-link>
             </div>
           </div>

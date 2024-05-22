@@ -15,14 +15,14 @@
         </div>
         <div class="row row-cols-2 row-cols-sm-4 justify-content-center">
             <div v-for="p in productosFiltrados" :key="p.idP" class="m-sm-2 mb-3">
-                <router-link class="text-dark" :to="'/producto/' + p.nombreP + '/' + p.idP">
+                <router-link class="text-dark text-decoration-none" :to="'/producto/' + p.nombreP + '/' + p.idP">
                     <div class="bounce">
                         <img class="border rounded border-secondary imgP imgP-sm"
                             :src="p.img_path ? generateImgPath(p.img_path) : '../../assets/img/LetraSinFondo.png'"
                             :alt="p.nombreP">
-                        <div class="text-center">
-                            <p>{{ p.nombreP }}</p>
-                            <span>{{ p.precioP }} €</span>
+                        <div class="text-center underline-hover">
+                            <p><strong>{{ p.nombreP }}</strong></p>
+                            <span><strong>{{ p.precioP }} €</strong></span>
                         </div>
                     </div>
                 </router-link>

@@ -11,38 +11,48 @@
 
     <!-- Ventana emergente del carrito -->
     <div v-if="showCart" class="cart-popup">
-      <h4>Carrito de compras</h4>
+      <h4>Cesta</h4>
       <ul>
+        <li v-if="cart.length == 0">No tienes ningun producto añadido</li>
         <li v-for="(product, index) in cart" :key="index">
-          {{ product.name }} - {{ product.price }}
-          <button @click="removeFromCart(index)" class="btn btn-danger btn-sm">-</button>
+          {{ product.nombreP }} - {{ product.precioP }}
+          <button @click="removeFromCart(index, product.precioP)" class="btn btn-danger btn-sm">-</button>
         </li>
       </ul>
+      <!-- <h6 v-if="cart.length > 1">Total: {{ getTotal() }} €</h6> -->
       <button @click="showCart = false" class="btn btn-secondary btn-sm">Cerrar</button>
+      <button @click="showCart = false" class="btn btn-warning btn-sm"><router-link to="/pago" class="text-decoration-none text-dark">Pagar</router-link></button>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'CarritoCart',
   data() {
     return {
       showCart: false,
-      cart: [
-        { name: 'Producto 1', price: '$10' },
-        { name: 'Producto 2', price: '$15' },
-        // Otros productos en el carrito
-      ]
     };
+  },
+  computed: {
+    cart(){
+      return this.$store.state.cart;
+    }
   },
   methods: {
     toggleCart() {
       this.showCart = !this.showCart;
     },
-    removeFromCart(index) {
+    removeFromCart(index, precioP) {
       this.cart.splice(index, 1);
-    }
+      this.$store.state.total -= parseFloat(precioP);
+      if(this.cart.length == 0){
+        this.$store.state.total =0;
+      }
+    },
+    ...mapGetters(['getTotal']),
   }
 };
 </script>
@@ -50,7 +60,7 @@ export default {
 <style>
 .cart-popup {
   position: fixed;
-  top: 20px;
+  top: 70px;
   right: 20px;
   background-color: white;
   border: 1px solid #ccc;

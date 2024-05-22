@@ -41,10 +41,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="text-center text-lg-start row row-cols-1">
+                            <div class="text-center text-lg-start row">
                                 <!-- <button type="reset"
                                     class="btn btn-outline-secondary btn-sm mx-sm-auto m-1">Limpiar</button> -->
-                                <button type="submit" class="btn btn-primary btn-sm mx-sm-auto m-1">Enviar</button>
+                                <button type="submit" class="btn btn-rosa border border-dark btn-sm mx-sm-auto m-1 col-sm-6">Enviar</button>
                             </div>
                         </div>
                     </fieldset>
@@ -159,3 +159,13 @@ export default {
     }
 };
 </script>
+
+<style>
+.btn-rosa{
+    background-color: #f7aefb ;
+}
+
+.btn-rosa:hover{
+    background-color: #cf5ed5;
+}
+</style>

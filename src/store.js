@@ -7,8 +7,9 @@ export default createStore({
     user: '',
     token:'',
     isAdmin:false,
-    count: 0
-    // Definir tu estado inicial aquí
+    count: 0,
+    cart: [],
+    total: 0,
   },
   mutations: {
     increment(state) {
@@ -22,12 +23,20 @@ export default createStore({
     },
     setIsAdmin(state, bool){
       state.isAdmin = bool;
+    },
+    addToCart(state, producto){
+      state.cart.push(producto);
     }
   },
   actions: {
     // Definir tus acciones aquí
   },
   getters: {
-    // Definir tus getters aquí
+    getTotal(state){
+      for (let i = 0; i < state.cart.length; i++) {
+        state.total += parseFloat(state.cart[i].precioP);
+      }
+      return state.total;
+    }
   }
 });
